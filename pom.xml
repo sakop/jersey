@@ -26,13 +26,40 @@
                     <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
                 </configuration>
             </plugin>
+
+
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.4.1</version>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <directory>${basedir}\src\main\webapp\classes</directory>
+                                </fileset>
+                            </filesets>
+                            <filesets>
+                                <fileset>
+                                    <directory>${basedir}\src\main\webapp\WEB-INF\lib</directory>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                        <id>default-clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
 
 
     </build>
 
     <dependencies>
-       <dependency>
+        <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-server</artifactId>
             <version>1.8</version>
@@ -42,5 +69,19 @@
             <artifactId>jersey-client</artifactId>
             <version>1.8</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-json</artifactId>
+            <version>1.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>3.0-alpha-1</version>
+        </dependency>
+
+
     </dependencies>
 </project>
