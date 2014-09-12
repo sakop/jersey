@@ -1,7 +1,11 @@
 package de.vogella.jersey.jaxb.resources;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Produces;
@@ -50,6 +54,22 @@ public class TodoResource {
 
     @PUT
     @Consumes(MediaType.APPLICATION_XML)
+    public Response putTodoForm(@FormParam("id") String id,
+            @FormParam("summary") String summary,
+            @FormParam("description") String description
+            ,@Context HttpServletResponse servletResponse) {
+        Todo todo = new Todo(id, summary);
+        todo.setSummary(summary);
+        try {
+            servletResponse.sendRedirect("/");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return putAndGetResponse(todo);
+    }
+
+    @PUT
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Response putTodo(JAXBElement<Todo> todo) {
         Todo c = todo.getValue();
         return putAndGetResponse(c);

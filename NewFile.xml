@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Body>
+        <ns1:EmptyCarSearch.Execute xmlns:ns1="RakutenReserve">
+            <ns1:Piemptycarsearchsdt>
+                <ns1:DeptDate>2014/09/11 10:00</ns1:DeptDate>
+                <ns1:RetnDate>2014/09/12 23:00</ns1:RetnDate>
+                <ns1:DeptShopCode>NissanTest</ns1:DeptShopCode>
+                <ns1:RetnShopCode>NissanTest</ns1:RetnShopCode>
+                <ns1:VehicleClassCode>A123</ns1:VehicleClassCode>
+                <ns1:ATMTKBN>AT</ns1:ATMTKBN>
+                <ns1:KinenShaKibo>2</ns1:KinenShaKibo>
+                <ns1:NaviShitei>1</ns1:NaviShitei>
+                <ns1:FourWDShitei>1</ns1:FourWDShitei>
+            </ns1:Piemptycarsearchsdt>
+        </ns1:EmptyCarSearch.Execute>
+    </soapenv:Body>
+</soapenv:Envelope>
