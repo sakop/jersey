@@ -34,30 +34,32 @@ public class TodoResource {
 
     //Application integration
     @GET
-    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @Produces({ MediaType.APPLICATION_JSON })
     public Todo getTodo() {
+
         Todo todo = TodoDao.instance.getModel().get(id);
         if (todo == null)
             throw new RuntimeException("Get: Todo with " + id + " not found");
+
         return todo;
     }
 
     // for the browser
-    @GET
-    @Produces(MediaType.TEXT_XML)
-    public Todo getTodoHTML() {
-        Todo todo = TodoDao.instance.getModel().get(id);
-        if (todo == null)
-            throw new RuntimeException("Get: Todo with " + id + " not found");
-        return todo;
-    }
+//    @GET
+//    @Produces(MediaType.TEXT_XML)
+//    public Todo getTodoHTML() {
+//        Todo todo = TodoDao.instance.getModel().get(id);
+//        if (todo == null)
+//            throw new RuntimeException("Get: Todo with " + id + " not found");
+//        return todo;
+//    }
 
     @PUT
     @Consumes(MediaType.APPLICATION_XML)
     public Response putTodoForm(@FormParam("id") String id,
             @FormParam("summary") String summary,
             @FormParam("description") String description
-            ,@Context HttpServletResponse servletResponse) {
+            , @Context HttpServletResponse servletResponse) {
         Todo todo = new Todo(id, summary);
         todo.setSummary(summary);
         try {
